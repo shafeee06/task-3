@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background: black;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  filter: brightness(0.5); 
+}
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      top: 5vh; 
+      animation: fadeIn 2s ease-in;
+    }
+    
+  
+  .astronaut {
+    position: absolute;
+    top: 0px;       
+    left: 20px;
+    width: 160px; 
+    animation: floatAstronaut 4s ease-in-out infinite;
+    transform-origin: top center;
+    z-index: 10;
+  }
+  
+  @keyframes floatAstronaut {
+    0%, 100% {
+      transform: translateY(0) rotate(-10deg);
+    }
+    50% {
+      transform: translateY(10px) rotate(10deg);
+    }
+  }
+  
+  @keyframes floatRocket {
+    0%, 100% {
+      transform: rotate(45deg) translateY(0);
+    }
+    50% {
+      transform: rotate(45deg) translateY(-10px);
+    }
+  }
+  
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.parallax {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-repeat: repeat;
+  animation-timing-function: linear;
+  mix-blend-mode: screen;
+}
+
+.layer1 {
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  animation: scroll1 60s linear infinite;
+  opacity: 0.5;
+}
+
+.layer2 {
+  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  animation: scroll2 90s linear infinite;
+  opacity: 0.3;
+}
+
+.layer3 {
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  animation: scroll3 120s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes scroll1 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-10%, -20%); }
+}
+
+@keyframes scroll2 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-15%, -10%); }
+}
+
+@keyframes scroll3 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-5%, -15%); }
+}
+
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow:
+    20vw 30vh white, 25vw 20vh #888, 75vw 70vh #aaa,
+    10vw 50vh #fff, 90vw 40vh #777, 85vw 25vh #999;
+  animation: twinkle 3s infinite alternate ease-in-out;
+}
+
+.spotlight {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+  border-radius: 50%;
+ 
+ top: 10px;        
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 100;
+  }
+  .spotlight-heading {
+    position: fixed; 
+    top: 5px;         
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+     transform: translate(-50%, -50%);
+
+  filter: blur(2px);
+  mix-blend-mode: screen;
+    z-index: 9999;    
+    pointer-events: none;
+    transition: left 0.05s ease-out, top 0.05s ease-out; 
+  }
+  
+  .spotlight-heading h2,
+  .spotlight-heading p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    text-shadow: 0 0 8px #fff, 0 0 16px #0ff;
+  }
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 8px white;
+  animation: fadeOut 0.7s ease-out forwards;
+}
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00f6ff, #ff00ea);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: textGlow 3s infinite alternate;
+}
+
+p {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.moon {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  width: 500px;      
+  height: 500px;     
+  z-index: 2;
+  transition: transform 2s ease-in-out, width 2s ease-in-out, height 2s ease-in-out;
+  animation: pulseMoon 6s infinite ease-in-out;
+}
+
+.moon-container {
+  position: absolute;
+  bottom: 40px;
+  left: 200px; 
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  z-index: 5;
+  gap: 40px; 
+}
+
+.quote-moon {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  color: #fff8f0;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  max-width: none;
+  background:none;
+  padding: 20px 25px;
+  border: none;
+  border-radius: 15px;
+  pointer-events: auto;
+  transform: translateY(-100px);
+  box-shadow:none;
+  text-shadow: 0 0 8px #ffffffaa, 0 0 16px #ffd6ff;
+}
+
+
+
+.quote-moon:hover {
+  opacity: 1;
+ }
+
+
+.spaceship {
+  position: absolute;
+  width: 100px;
+  top: 20%;
+  left: -150px;
+  z-index: 1;
+  animation: fly-across 30s linear infinite;
+  opacity: 0.8;
+}
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(white, transparent);
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 2;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(400px, 600px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.star-0 {
+  animation: shoot 3s linear infinite;
+  animation-delay: 5s;
+  left: 20%;
+}
+
+.star-1 {
+  animation: shoot 4s linear infinite;
+  animation-delay: 11s;
+  left: 40%;
+}
+
+.star-2 {
+  animation: shoot 2.5s linear infinite;
+  animation-delay: 18s;
+  left: 70%;
+}
+
+.star-3 {
+  animation: shoot 3.5s linear infinite;
+  animation-delay: 26s;
+  left: 55%;
+}
+
+@keyframes fly-across {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(160vw) rotate(360deg);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px #00f6ff, 0 0 20px #00f6ff;
+  }
+  to {
+    text-shadow: 0 0 20px #ff00ea, 0 0 30px #ff00ea;
+  }
+}
+@keyframes pulseMoon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);  
+  }
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+@media (max-width: 768px) {
+  .astronaut {
+    width: 100px; 
+    top: 10px; 
+  }
+
+  .moon {
+    width: 300px; 
+    height: 300px; 
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .moon-container {
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%); 
+    gap: 20px;
+  }
+
+  .quote-moon {
+    font-size: 2rem;
+    padding: 10px 15px;
+  }
+
+  .content {
+    top: 10vh; 
+    padding: 15px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .astronaut {
+    width: 80px;
+    top: 5px;
+  }
+
+  .moon {
+    width: 200px; 
+    height: 200px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .moon-container {
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%); 
+    gap: 10px;
+  }
+
+  .quote-moon {
+    font-size: 1.5rem; 
+    padding: 5px 10px;
+  }
+
+  .content {
+    top: 15vh;
+    padding: 10px;
+  }
+}
